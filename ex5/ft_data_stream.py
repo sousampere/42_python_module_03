@@ -1,11 +1,8 @@
 #!/bin/bash/python3
 
 
-from pydoc import getpager
-
-
 def event_generator():
-    """Event generator"""
+    """Event generator (SIMULATOR)"""
     for i in range(322):
         yield {
             'event': i,
@@ -53,7 +50,6 @@ def event_generator():
         'is_levelup': True}
 
 
-
 event_count = 0
 treasure_events = 0
 level_up_event = 0
@@ -80,6 +76,7 @@ print("Processing time: 0.045 seconds")
 
 print("\n=== Generator Demonstreation ===")
 
+
 def get_fibonacci(max: int):
     """Generates fibonnaci sequence (max generations to send)"""
     a = 0
@@ -92,20 +89,28 @@ def get_fibonacci(max: int):
         a, b = b, next
         next = a + b
 
+
 def get_prime(max: int):
+    """Prime number generator. Max : numbers to generate"""
+    current_number = 2
     i = 0
-    number = 1
     while (i < max):
-        for i in range(number):
-            if (i == 0 or i == 1 or number % i == 0):
-                yield number
-        
+        is_prime = True  # Default value
+        for n in range(2, current_number - 1):
+            if (current_number % n == 0):
+                is_prime = False
+        if (is_prime):
+            i += 1
+            yield current_number
+        current_number += 1
+
 
 text = ""
 for val in get_fibonacci(10):
     text = f"{text} {val}"
 print("Fibonacci sequence:" + text)
 
+text = ""
 for val in get_prime(5):
     text = f"{text} {val}"
 print("Fibonacci sequence:" + text)
