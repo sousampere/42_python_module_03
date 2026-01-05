@@ -22,7 +22,7 @@ def event_generator():
         yield {
             'event': i,
             'name': 'Napo',
-            'level': 2,
+            'level': 55,
             'text': 'found a useless dog bone...',
             'is_treasure': False,
             'is_levelup': False}
