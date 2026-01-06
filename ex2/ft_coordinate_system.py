@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
-
 import math
-import sys
 
 
 def dist(gps: tuple, coords: tuple) -> float:
@@ -38,13 +36,14 @@ def parse_coords(string: str) -> tuple:
     Returns:
         tuple: Parsed coords as a tuple
     """
+    print(f"Parsing coordinates \"{string}\"")
     try:
         coords = tuple()  # Creating base tuple
         for arg in string.split(","):  # For each parsed arg
             coords = coords + (int(arg),)  # Adding parsed arg to the tuple
         return (coords)
-    except Exception as e:
-        raise Exception(f"Error while parsing : {e}")
+    except ValueError as e:
+        raise ValueError(f"Error while parsing : {e}")
 
 
 print("=== Game Coordinate System ===\n")
@@ -53,22 +52,21 @@ origin = (0, 0, 0)
 print(f"Position created: {gps_pos}")
 print(f"Distance between {origin} and {gps_pos}: {dist(gps_pos, origin):.2f}")
 print("")
-print(f"Parsing coordinates : \"{sys.argv[1]}\"")
-try:
-    coords = parse_coords(sys.argv[1])
-except Exception as e:
-    print("Error:", e)
-
+string = "3,4,0"
+coords = parse_coords(string)
 print(f"Parsed position: {coords}")
 print(f"Distance between {origin} and {coords}: {dist(origin, coords):.1f}")
 print("")
 print("Parsing invalid coords")
+string = "abc,def,few"
 try:
-    new_coords = parse_coords(sys.argv[2])
-    print(f"New coords : {new_coords}")
-except Exception as e:
-    print("Error:", e)
+    coords = parse_coords(string)
+except ValueError as e:
+    print(e)
+    print(f"Type: {type(e)}")
 print("")
 print("Unpacking demo:")
 print(f"Player at x={coords[0]}, y={coords[1]}, z={coords[2]}")
-print(f"Coordinates: X={coords[0]}, Y={coords[1]}, Z={coords[2]}")
+print("Coordinates:")
+for coord in coords:
+    print(coord)
