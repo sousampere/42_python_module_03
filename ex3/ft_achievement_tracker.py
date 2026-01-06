@@ -1,4 +1,4 @@
-#!/bin/bash/python3
+#!/usr/bin/python3
 
 
 survolt = {'Iron Belly', 'Time for Stew', 'How Did We Get Here?'}
