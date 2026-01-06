@@ -50,6 +50,7 @@ def event_generator():
         'is_levelup': True}
 
 
+print("Processing 1000 game events...")
 event_count = 0
 treasure_events = 0
 level_up_event = 0
@@ -74,7 +75,7 @@ print(f"Level-up events: {level_up_event}")
 print("\nMemory usage: Constant (streaming)")
 print("Processing time: 0.045 seconds")
 
-print("\n=== Generator Demonstreation ===")
+print("\n=== Generator Demonstration ===")
 
 
 def get_fibonacci(max: int):

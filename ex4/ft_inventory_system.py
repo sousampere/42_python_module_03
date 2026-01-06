@@ -184,7 +184,7 @@ class Player:
         return (None)
 
 
-print("=== PLayer Inventory System ===")
+print("=== Player Inventory System ===")
 print("")
 alice = Player("alice")
 alice.add_item({
